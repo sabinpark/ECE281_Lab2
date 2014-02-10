@@ -18,7 +18,19 @@ A schematic of the 1-bit full adder was provdided.  Using this schematic, I crea
 Using the truth table, I created two Karnaugh maps, one each for SUM and C_OUT.  Next, I used those k-maps to come up with the boolean equations.  I verified my answers with the text once again.
 
 #### Karnaugh Maps and Boolean Equations
-![alt text](https://raw2.github.com/sabinpark/ECE281_Lab2/master/full_adder_kmaps_equations.PNG "K-Maps and Boolean Equations)
+![alt text](https://raw2.github.com/sabinpark/ECE281_Lab2/master/full_adder_kmaps_equations.PNG "K-Maps and Boolean Equations")
 
 ### Interface
 Below is an image of the full adder interface drawn in two different ways.  Both show three inputs and two outputs as explained above.
+![alt text](https://raw2.github.com/sabinpark/ECE281_Lab2/master/full_adder_interfaces.png "Full Adder Interface")
+
+### VHDL Module and Test Bench
+The three inputs and the two outputs were set as standard logic signals.  The code below shows the CONNECTION part of the module:
+```vhdl
+  S <= A xor B xor Cin;
+	Cout <= (A and B) or (A and Cin) or (B and Cin);
+```
+Each binary combination of the inputs were tested in the test bench and are displayed in the waveform image below:
+#### Full Adder Test Bench Results
+![alt text](https://raw2.github.com/sabinpark/ECE281_Lab2/master/full_adder_waveform.PNG "Full Adder Waveform")
+Comparing the values of the waveform with the simulation proved that the simulation was a success!
