@@ -34,3 +34,6 @@ Each binary combination of the inputs were tested in the test bench and are disp
 #### Full Adder Test Bench Results
 ![alt text](https://raw2.github.com/sabinpark/ECE281_Lab2/master/full_adder_waveform.PNG "Full Adder Waveform")
 Comparing the values of the waveform with the simulation proved that the simulation was a success!
+
+## Errors/Debugging
+Everything in my code seemed to be working well.  The syntax for the full adder and the test bench were correct.  However, when I first ran my simulation, the results were all "U".  This meant that the inputs were not found properly.  I went over my code multiple times and to no avail, the results were still incorrect.  On a whim, I decided to restart ISE project navigator.  I then reran the simulation and I got the correct results.  I realized that when a simulation doesn't work, it may be due to the program itself and that restarting may be required.
