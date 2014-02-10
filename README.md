@@ -42,6 +42,7 @@ Everything in my code seemed to be working well.  The syntax for the full adder 
 ## 4-Bit Adder
 The first part of the actual lab portion was to create a 4-bit adder by chaining four of the 1-bit full adders together.  I created a schematic of the 4-bit adder as shown below:
 ![alt text](https://raw2.github.com/sabinpark/ECE281_Lab2/master/4_bit_adder_addition_schematic.PNG "4_Bit Adder Addition Schematic")
+
 For the adder, I set the C_IN of the LSB as 0.  The rest of the C_INs were set as the C_OUTs of the previous bit.  This schematic follows exactly what I did in the vhdl module.
 
 ### VHDL for the 4-Bit Adder (ADDITION)
