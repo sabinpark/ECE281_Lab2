@@ -1,10 +1,8 @@
 ECE281_Lab2
 ===========
-
 Sabin's Lab 2
 
 # Pre-Lab
-
 ## Full Adder
 A 1-bit full adder is a component that takes in 3 binary inputs and returns the sum of the three.  The three inputs are A, B, and Cin (carry in).  The two outputs in a 1-bit adder are S (sum) and Cout (carry out).
 
@@ -41,5 +39,42 @@ Comparing the values of the waveform with the simulation proved that the simulat
 Everything in my code seemed to be working well.  The syntax for the full adder and the test bench were correct.  However, when I first ran my simulation, the results were all "U".  This meant that the inputs were not found properly.  I went over my code multiple times and to no avail, the results were still incorrect.  On a whim, I decided to restart ISE project navigator.  I then reran the simulation and I got the correct results.  I realized that when a simulation doesn't work, it may be due to the program itself and that restarting may be required.
 
 # Lab
-
 ## 4-Bit Adder
+The first part of the actual lab portion was to create a 4-bit adder by chaining four of the 1-bit full adders together.  I created a schematic of the 4-bit adder as shown below:
+![alt text](https://raw2.github.com/sabinpark/ECE281_Lab2/master/4_bit_adder_addition_schematic.PNG "4_Bit Adder Addition Schematic")
+For the adder, I set the C_IN of the LSB as 0.  The rest of the C_INs were set as the C_OUTs of the previous bit.  This schematic follows exactly what I did in the vhdl module.
+
+### VHDL for the 4-Bit Adder (ADDITION)
+Below is the CONNECTIONS part of the 4-bit adder.  This was made using structural architecture.  As described earlier, the first bit (the LSB) has a *Cin* of *0*.  The rest of the bits take in the *Cout* of the previous bit.  Finally, the MSB outputs a *null* value for its *Cout*.
+
+```
+	Bit0: Single_Bit_Full_Adder PORT MAP(
+		Cin => '0',
+		A => Ain(0),
+		B => Bin(0),
+		Cout => C0,
+		S => Result(0));
+		
+	Bit1: Single_Bit_Full_Adder PORT MAP(
+		Cin => C0,
+		A => Ain(1),
+		B => Bin(1),
+		Cout => C1,
+		S => Result(1));
+		
+	Bit2: Single_Bit_Full_Adder PORT MAP(
+		Cin => C1,
+		A => Ain(2),
+		B => Bin(2),
+		Cout => C2,
+		S => Result(2));
+	
+	Bit3: Single_Bit_Full_Adder PORT MAP(
+		Cin => C2,
+		A => Ain(3),
+		B => Bin(3),
+		Cout => nullWire,
+		S => Result(3));
+```
+
+Essentially, the code above looks at 1 bit of the two input buses and sums it together with a carry in bit.  The sums are outputted into the respective bits for the *sum* bus.  *NOTE:* I had to create intermediary signals within the ARCHITECTURE part of the module.  These intermediary signals were used to set the carry in and carry out bits.
