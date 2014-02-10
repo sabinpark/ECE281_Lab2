@@ -3,6 +3,8 @@ ECE281_Lab2
 
 Sabin's Lab 2
 
+# Pre-Lab
+
 ## Full Adder
 A 1-bit full adder is a component that takes in 3 binary inputs and returns the sum of the three.  The three inputs are A, B, and Cin (carry in).  The two outputs in a 1-bit adder are S (sum) and Cout (carry out).
 
@@ -28,7 +30,7 @@ Below is an image of the full adder interface drawn in two different ways.  Both
 The three inputs and the two outputs were set as standard logic signals.  The code below shows the CONNECTION part of the module:
 ```vhdl
   S <= A xor B xor Cin;
-	Cout <= (A and B) or (A and Cin) or (B and Cin);
+  Cout <= (A and B) or (A and Cin) or (B and Cin);
 ```
 Each binary combination of the inputs were tested in the test bench and are displayed in the waveform image below:
 #### Full Adder Test Bench Results
@@ -37,3 +39,7 @@ Comparing the values of the waveform with the simulation proved that the simulat
 
 ## Errors/Debugging
 Everything in my code seemed to be working well.  The syntax for the full adder and the test bench were correct.  However, when I first ran my simulation, the results were all "U".  This meant that the inputs were not found properly.  I went over my code multiple times and to no avail, the results were still incorrect.  On a whim, I decided to restart ISE project navigator.  I then reran the simulation and I got the correct results.  I realized that when a simulation doesn't work, it may be due to the program itself and that restarting may be required.
+
+# Lab
+
+## 4-Bit Adder
