@@ -55,6 +55,7 @@ architecture Structural of Four_Bit_Adder is
 	signal C1 : std_logic;
 	signal C2 : std_logic;
 	signal C3 : std_logic;
+	signal finalCarry : std_logic;
 	
 begin
 	Bin_NOT <= not Bin;
@@ -90,8 +91,10 @@ begin
 		Cin => C3,
 		A => Ain(3),
 		B => muxOutput(3),
-		Cout => Overflow,
+		Cout => finalCarry,
 		S => Result(3));
+
+	Overflow <= C3 XOR finalCarry;
 
 end Structural;
 
