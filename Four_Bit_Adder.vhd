@@ -28,11 +28,13 @@ use ieee.std_logic_unsigned.all;
 entity Four_Bit_Adder is
     Port ( Ain : in  STD_LOGIC_VECTOR (3 downto 0);
            Bin : in  STD_LOGIC_VECTOR (3 downto 0);
-           Result : out  STD_LOGIC_VECTOR (3 downto 0));
+           Result : out  STD_LOGIC_VECTOR (3 downto 0);
+			  PushButton : in STD_LOGIC;
+			  Overflow : out STD_LOGIC);
 end Four_Bit_Adder;
 
 architecture Structural of Four_Bit_Adder is
-	component full_adder
+	component Single_Bit_Full_Adder
 		 Port ( Cin  : in  STD_LOGIC;
 				  A 	 : in  STD_LOGIC;
 				  B 	 : in  STD_LOGIC;
@@ -40,38 +42,55 @@ architecture Structural of Four_Bit_Adder is
 				  S 	 : out  STD_LOGIC);
 	end component;
 	
-	signal C0 : std_logic;
+	component multiplexer
+		Port ( Switch 	: in  STD_LOGIC;  -- will be used with a push button
+				 D0		: in  STD_LOGIC_VECTOR (3 downto 0);
+		  	 	 D1	 	: in  STD_LOGIC_VECTOR (3 downto 0);
+				 Y	 		: out STD_LOGIC_VECTOR (3 downto 0));  -- operation will be ADD for 0 and SUBTRACT for 1
+	end component;
+	
+	signal Bin_NOT 	: std_logic_vector (3 downto 0);
+	signal muxOutput  : std_logic_vector (3 downto 0);
+	
 	signal C1 : std_logic;
 	signal C2 : std_logic;
-	signal nullWire : std_logic;
+	signal C3 : std_logic;
 	
 begin
+	Bin_NOT <= not Bin;
+
+	Mux: multiplexer PORT MAP(
+		Switch => PushButton, 
+		D0	 	 => Bin, 
+		D1		 => Bin_NOT, 
+		Y 		 => muxOutput);
+
 	Bit0: Single_Bit_Full_Adder PORT MAP(
-		Cin => '0',
+		Cin => PushButton,
 		A => Ain(0),
-		B => Bin(0),
-		Cout => C0,
+		B => muxOutput(0),
+		Cout => C1,
 		S => Result(0));
 		
 	Bit1: Single_Bit_Full_Adder PORT MAP(
-		Cin => C0,
+		Cin => C1,
 		A => Ain(1),
-		B => Bin(1),
-		Cout => C1,
+		B => muxOutput(1),
+		Cout => C2,
 		S => Result(1));
 		
 	Bit2: Single_Bit_Full_Adder PORT MAP(
-		Cin => C1,
+		Cin => C2,
 		A => Ain(2),
-		B => Bin(2),
-		Cout => C2,
+		B => muxOutput(2),
+		Cout => C3,
 		S => Result(2));
 	
 	Bit3: Single_Bit_Full_Adder PORT MAP(
-		Cin => C2,
+		Cin => C3,
 		A => Ain(3),
-		B => Bin(3),
-		Cout => nullWire,
+		B => muxOutput(3),
+		Cout => Overflow,
 		S => Result(3));
 
 end Structural;

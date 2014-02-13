@@ -35,7 +35,7 @@ end Single_Bit_Full_Adder;
 architecture Behavioral of Single_Bit_Full_Adder is
 
 begin
-	S <= A xor B xor Cin;
-	Cout <= (A and B) or (A and Cin) or (B and Cin);
+	S 		<=  A xor B xor Cin;
+	Cout 	<= (A and B) or (A and Cin) or (B and Cin);
 end Behavioral;
 
