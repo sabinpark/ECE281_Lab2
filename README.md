@@ -25,6 +25,7 @@ Using the truth table, I created two Karnaugh maps, one each for SUM and C_OUT. 
 
 ### Interface
 Below is an image of the full adder interface drawn in two different ways.  Both show three inputs and two outputs as explained above.
+
 ![alt text](https://raw2.github.com/sabinpark/ECE281_Lab2/master/full_adder_interfaces.png "Full Adder Interface")
 
 ### VHDL Module and Test Bench
