@@ -2,6 +2,9 @@ ECE281_Lab2
 ===========
 Sabin's Lab 2
 
+# Functionality Update
+Captain Silva checked my design.  Full points for functionality!
+
 # Pre-Lab
 ## Full Adder
 A 1-bit full adder is a component that takes in 3 binary inputs and returns the sum of the three.  The three inputs are A, B, and Cin (carry in).  The two outputs in a 1-bit adder are S (sum) and Cout (carry out).
