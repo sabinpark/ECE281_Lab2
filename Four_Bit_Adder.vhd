@@ -26,10 +26,10 @@ use ieee.std_logic_unsigned.all;
 --use UNISIM.VComponents.all;
 
 entity Four_Bit_Adder is
-    Port ( Ain : in  STD_LOGIC_VECTOR (3 downto 0);
+    Port ( PushButton : in STD_LOGIC;
+			  Ain : in  STD_LOGIC_VECTOR (3 downto 0);
            Bin : in  STD_LOGIC_VECTOR (3 downto 0);
-           Result : out  STD_LOGIC_VECTOR (3 downto 0);
-			  PushButton : in STD_LOGIC;
+			  Result : out  STD_LOGIC_VECTOR (3 downto 0);
 			  Overflow : out STD_LOGIC);
 end Four_Bit_Adder;
 
