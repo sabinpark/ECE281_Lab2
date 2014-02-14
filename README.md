@@ -37,6 +37,7 @@ The three inputs and the two outputs were set as standard logic signals.  The co
 Each binary combination of the inputs were tested in the test bench and are displayed in the waveform image below:
 #### Full Adder Test Bench Results
 ![alt text](https://raw2.github.com/sabinpark/ECE281_Lab2/master/full_adder_waveform.PNG "Full Adder Waveform")
+
 Comparing the values of the waveform with the simulation proved that the simulation was a success!
 
 ## Errors/Debugging
